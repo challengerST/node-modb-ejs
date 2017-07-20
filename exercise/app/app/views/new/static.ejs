@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <title><%= title%>></title>
+    <script type="text/javascript" src="https://www.dynamsoft.com/Demo/DWT/Resources/dynamsoft.webtwain.min.js"> </script>
+</head>
+<body>
+    <input type="button" value="Scan" onclick="AcquireImage();" />
+    <div id="dwtcontrolContainer"></div>
+<div>
+    <%- include ./info %> 
+</div>
+    <script type="text/javascript">
+    function AcquireImage() {
+        var DWObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
+        DWObject.IfDisableSourceAfterAcquire = true;
+        var bSelected = DWObject.SelectSource(); 
+
+        if(bSelected) {
+            var OnAcquireImageSuccess, OnAcquireImageFailure;
+            OnAcquireImageSuccess = OnAcquireImageFailure = function () {
+            DWObject.CloseSource();
+        };
+
+        DWObject.OpenSource();
+        DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);  
+        }
+    }
+    </script>
+</body>
+</html>
