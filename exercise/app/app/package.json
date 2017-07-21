@@ -13,6 +13,8 @@
     "express": "~4.15.2",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
-    "mongodb":">=1.4.8"
+    "mongodb":">=1.4.8",
+    "connect-mongo": ">=0.1.7",
+"express-session": "~1.0.4"
   }
 }
